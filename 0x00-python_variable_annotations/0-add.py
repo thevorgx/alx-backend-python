@@ -2,6 +2,6 @@
 """float add"""
 
 
-def add(a: float, b: float):
+def add(a: float, b: float) -> float:
     """add floats"""
     return (a + b)
