@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Async function"""
-from random import uniform
-from asyncio import sleep
+"""asynchronous function"""
+import asyncio
+import random
 
 
 async def wait_random(max_delay: int = 10) -> float:
-    """Async function that takes max delay of 10"""
-    waiting = uniform(0, max_delay)
-    await sleep(waiting)
+    """Async function that waits for a random delay up to max_delay """
+    waiting = random.uniform(0, max_delay)
+    await asyncio.sleep(waiting)
     return (waiting)
