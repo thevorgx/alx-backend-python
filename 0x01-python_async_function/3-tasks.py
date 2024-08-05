@@ -1,3 +1,10 @@
-#!/usr/bin/python3
-def test(n: int):
-    print(n)
+#!/usr/bin/env python3
+"""Tasks"""
+import asyncio
+wait_random = __import__('0-basic_async_syntax').wait_random
+
+
+def task_wait_random(max_delay: int) -> asyncio.Task:
+    """creat a task and return the task"""
+    task = asyncio.create_task(wait_random(max_delay))
+    return (task)
