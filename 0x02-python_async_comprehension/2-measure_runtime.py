@@ -7,14 +7,14 @@ async_comprehension = __import__('1-async_comprehension').async_comprehension
 
 async def measure_runtime() -> float:
     """run 4 tasks in parallel and return total run_time"""
+    tasks = []
     t0 = time()
 
-    task1 = asyncio.create_task(async_comprehension())
-    task2 = asyncio.create_task(async_comprehension())
-    task3 = asyncio.create_task(async_comprehension())
-    task4 = asyncio.create_task(async_comprehension())
+    for _ in range(4):
+        task = asyncio.create_task(async_comprehension())
+        tasks.append(task)
 
-    await asyncio.gather(task1, task2, task3, task4)
+    await asyncio.gather(*tasks)
 
     tf = time()
 
