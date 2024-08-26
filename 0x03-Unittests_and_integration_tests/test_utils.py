@@ -32,19 +32,19 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """place holder for requirements"""
+    """test class: TestGetJson"""
     @parameterized.expand([
         ('http://example.com', {"payload": True}),
         ('http://holberton.io', {"payload": False})
     ])
-    @patch('utils.get_json')
+    @patch('utils.requests.get')
     def test_get_json(self, test_url, expected_payload, mock_get_json):
-        "place holder for the other requirements"
-        if test_url == 'http://example.com':
-            mock_get_json.return_value = {"payload": True}
-        elif test_url == 'http://holberton.io':
-            mock_get_json.return_value = {"payload": False}
+        "test get_json method as 'gj'"
+        mock_response = unittest.mock.Mock()
+        mock_response.json.return_value = expected_payload
+        mock_get_json.return_value = mock_response
 
         res = gj(test_url)
+        print(f"vorg: {res}")
         self.assertEqual(res, expected_payload)
         mock_get_json.assert_called_once_with(test_url)
