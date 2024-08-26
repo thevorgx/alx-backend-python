@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """test_utils module"""
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from parameterized import parameterized
 from utils import access_nested_map as anp
 from utils import get_json as gj
@@ -40,7 +40,7 @@ class TestGetJson(unittest.TestCase):
     @patch('utils.requests.get')
     def test_get_json(self, test_url, expected_payload, mock_get_json):
         "test get_json method as 'gj'"
-        mock_response = unittest.mock.Mock()
+        mock_response = Mock()
         mock_response.json.return_value = expected_payload
         mock_get_json.return_value = mock_response
 
